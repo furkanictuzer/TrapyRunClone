@@ -24,9 +24,9 @@ public class SwipeController : MonoBehaviour
 
     private void Awake()
     {
-        var width = PathCreator.Instance.pathWidth;
+        /*var width = //PathCreator.Instance.pathWidth;
         minXPos = -width / 2;
-        maxXPos = width - width / 2 -1;
+        maxXPos = width - width / 2 -1;*/
 
         DisableSwipe();
         
