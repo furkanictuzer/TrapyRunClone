@@ -18,7 +18,7 @@ public class PathCreator : MonoSingleton<PathCreator>
 
     private int _currentPathLength = 0;
 
-    public readonly List<GameObject> pathCubes = new List<GameObject>();
+    public List<GameObject> pathCubes = new List<GameObject>();
     
 
     private void OnValidate()

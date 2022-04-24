@@ -31,14 +31,7 @@ public class CubeCollisionController : MonoBehaviour
             Fall();
         }
     }
-
-    private void OnCollisionExit(Collision other)
-    {
-        if (other.gameObject.GetComponent<Player.Player>())
-        {
-            Fall();
-        }
-    }
+    
 
     private void Fall()
     {

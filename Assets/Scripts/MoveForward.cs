@@ -7,34 +7,39 @@ using UnityEngine;
 public class MoveForward : MonoBehaviour
 {
     [SerializeField] private Transform playerTransform;
-
-    [SerializeField] private float acceleration = 0.5f;
     
-    private float _forwardSpeed;
+    [Space]
+    [Range(0,30)]
+    [SerializeField] private float forwardSpeed;
 
-    private bool _isFail;
+    private bool _canMove;
+
+    private void Awake()
+    {
+        DisableMove();
+        
+        FirstTouchController.Instance.AddMethodFirstTouch(EnableMove);
+    }
 
     private void Update()
     {
-        SetSpeed();
-        
-        if (_isFail) return;
+        if (!_canMove) return;
         
         Move();
     }
 
-    private void SetSpeed()
-    {
-        _forwardSpeed = (playerTransform.position.z - transform.position.z) * acceleration;
-    }
-
     private void Move()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * _forwardSpeed);
+        transform.Translate(Vector3.forward * Time.deltaTime * forwardSpeed);
     }
     
     public void DisableMove()
-        {
-            _isFail = true;
-        }
+    {
+        _canMove = false;
+    }
+
+    public void EnableMove()
+    {
+        _canMove = true;
+    }
 }

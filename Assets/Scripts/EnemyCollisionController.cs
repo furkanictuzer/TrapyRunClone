@@ -26,13 +26,13 @@ public class EnemyCollisionController : MonoBehaviour
         }
     }
 
-    /*private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.GetComponent<Player.Player>())
+        if (collision.gameObject.CompareTag("PrisonBars"))
         {
-            Catch(collision.transform.position);
+            _moveForward.DisableMove();
         }
-    }*/
+    }
 
     private void Catch(Vector3 caughtPos)
     {

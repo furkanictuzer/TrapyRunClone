@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Player;
 using UnityEngine;
 
 public class SwipeController : MonoBehaviour
@@ -27,6 +28,10 @@ public class SwipeController : MonoBehaviour
         minXPos = -width / 2;
         maxXPos = width - width / 2 -1;
 
+        DisableSwipe();
+        
+        FirstTouchController.Instance.AddMethodFirstTouch(EnableSwipe);
+        
         ActionController.Instance.AddMethodToAction(ActionType.Fail, DisableSwipe);
         ActionController.Instance.AddMethodToAction(ActionType.Finish, DisableSwipe);
     }
@@ -88,6 +93,15 @@ public class SwipeController : MonoBehaviour
     private void DisableSwipe()
     {
         _touchable = false;
+        
+        PlayerAnimatorController.Instance.SetSpeed(0);
+    }
+
+    private void EnableSwipe()
+    {
+        _touchable = true;
+        
+        PlayerAnimatorController.Instance.SetSpeed(1);
     }
     
 
